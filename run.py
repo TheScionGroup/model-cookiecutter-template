@@ -55,7 +55,7 @@ class ChangeHandler(FileSystemEventHandler):
 
 if __name__ == "__main__":
     # Watch the template directory where actual changes matter
-    path = "{{cookiecutter.pypi_package_name}}"
+    path = "{{cookiecutter.project_slug}}"
     event_handler = ChangeHandler()
     observer = Observer()
     observer.schedule(event_handler, path, recursive=True)

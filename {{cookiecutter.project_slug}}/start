@@ -1,0 +1,39 @@
+#!/bin/bash
+
+echo
+
+display_help() {
+  echo
+  echo "================================="
+  echo "      Scion ML Development"
+  echo "================================="
+  echo "Syntax: ./start [command]"
+  echo
+  echo "---commands---"
+  echo "help             Print CLI help"
+  echo "mlflow-prod      Activate prod mlflow server. Stores mlflow config files in package/src/mlruns"
+  echo "mlflow-dev       Activates mlflow dev server. Stores mlflow config files in dev/mlruns"
+  echo
+}
+
+case "$1" in
+help)
+  display_help
+  ;;
+mlflow-prod)
+    setup_environment
+    load_env_variables
+    mlflow server --backend-store-uri file:./package/src/mlruns --default-artifact-root s3://scionml-prod
+    ;;
+mlflow-dev)
+    setup_environment
+    load_env_variables
+    sync_env_variables
+    mlflow server --backend-store-uri file:./dev/mlruns_dev --default-artifact-root s3://scionml-dev
+    ;;
+lint)
+flake8 --max-line-length=100 --ignore E123,W503,E402,E701,W504 ./package
+  ;;
+esac
+
+echo

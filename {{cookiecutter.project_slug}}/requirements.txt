@@ -1,0 +1,1 @@
+scion_analytics @ git+https://github.com:TheScionGroup/scion_analytics@main

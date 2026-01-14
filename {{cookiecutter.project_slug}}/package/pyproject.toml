@@ -1,13 +1,13 @@
 [project]
-name = "{{cookiecutter.pypi_package_name}}"
+name = "{{cookiecutter.project_slug}}"
 version = "{{ cookiecutter.first_version }}"
 description = "{{cookiecutter.project_short_description}}"
 readme = "README.md"
 authors = [
-  {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
+  {name = "{{cookiecutter.developer_name}}", email = "{{cookiecutter.developer_email}}"}
 ]
 maintainers = [
-  {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
+  {name = "{{cookiecutter.developer_name}}", email = "{{cookiecutter.developer_email}}"}
 ]
 classifiers = [
     # TODO
@@ -27,10 +27,12 @@ test = [
     "ipdb", # debugging
 ]
 
-[project.urls]
-bugs = "https://github.com/{{cookiecutter.__gh_slug}}/issues"
-changelog = "https://github.com/{{cookiecutter.__gh_slug}}/blob/master/changelog.md"
-homepage = "https://github.com/{{cookiecutter.__gh_slug}}"
+[build-system]
+requires = [
+    "setuptools>=60",
+    "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
 
 [project.scripts]
 {{cookiecutter.project_slug}} = "{{cookiecutter.project_slug}}.cli:app"
@@ -55,3 +57,4 @@ select = [
 
 [tool.uv]
 package = true
+
