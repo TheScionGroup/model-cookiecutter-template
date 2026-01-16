@@ -21,10 +21,11 @@ help)
   display_help
   ;;
 mlflow-prod)
+    eval "$(scion_analytics env variables)"
     mlflow server --backend-store-uri file:./package/src/{{cookiecutter.project_slug}}/mlruns --default-artifact-root s3://scionml-prod
     ;;
 mlflow-dev)
-    mlflow server --backend-store-uri file:./dev/mlruns_dev --default-artifact-root s3://scionml-dev
+    mlflow server --backend-store-uri file:./dev/mlruns --default-artifact-root file:./dev/artifact_storage/
     ;;
 lint)
 flake8 --max-line-length=100 --ignore E123,W503,E402,E701,W504 ./package
