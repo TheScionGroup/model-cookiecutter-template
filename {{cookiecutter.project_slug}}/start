@@ -21,14 +21,9 @@ help)
   display_help
   ;;
 mlflow-prod)
-    setup_environment
-    load_env_variables
-    mlflow server --backend-store-uri file:./package/src/mlruns --default-artifact-root s3://scionml-prod
+    mlflow server --backend-store-uri file:./package/src/{{cookiecutter.project_slug}}/mlruns --default-artifact-root s3://scionml-prod
     ;;
 mlflow-dev)
-    setup_environment
-    load_env_variables
-    sync_env_variables
     mlflow server --backend-store-uri file:./dev/mlruns_dev --default-artifact-root s3://scionml-dev
     ;;
 lint)
