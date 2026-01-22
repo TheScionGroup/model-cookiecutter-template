@@ -1,6 +1,6 @@
 {
   "project_name": "Model Name",
-  "project_slug": "{{ cookiecutter.project_name.strip().replace('-', '_').replace(' ', '_').lower() }}",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace('model', '').strip().replace('-', '_').replace(' ', '_') }}",
   "developer_name": "Jo-l Collins",
   "developer_email": "joel.collins@thesciongroup.com",
   "developer_github_username": "joelsewhere",
